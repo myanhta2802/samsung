@@ -1,0 +1,353 @@
+/* Global */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #000;
+    background-color: #fff;
+}
+
+/* Navigation */
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 36px;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.nav-menu a,
+.nav-right a {
+    margin-left: 20px;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-left {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Hero */
+
+.hero {
+    text-align: center;
+    padding: 32px 20px 24px; /* less space above & below */
+}
+
+.hero h1 {
+    font-size: 42px;         /* slightly smaller */
+    font-weight: 600;
+    margin: 0 0 12px;        /* less space under heading */
+}
+
+.subtitle {
+    font-size: 17px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;               /* remove extra vertical gap */
+}
+
+.hero-image img {
+    width: 80%;              /* smaller image so hero fits on screen */
+    max-width: 900px;
+    margin: 24px auto 16px;  /* less space above & below image */
+    border-radius: 8px;
+    display: block;
+}
+
+/* Logic Section */
+
+/* Logic Section – two-column layout */
+
+.logic {
+    padding: 60px 20px 80px;
+}
+
+.logic-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logic-left {
+    flex: 1;
+    max-width: 520px;
+}
+
+.logic-label {
+    font-size: 24px;
+    color: #999;
+    margin: 0 0 6px;
+    line-height: 1.3;
+}
+
+.logic-main {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 14px;
+}
+
+.logic-body {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+    max-width: 480px;
+}
+
+.logic-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.logic-right img {
+    width: 90%;
+    max-width: 450px;
+    border-radius: 12px;
+    display: block;
+}
+
+
+/* Highlights */
+/* Highlights */
+
+.highlights {
+    padding: 40px 20px 80px;
+}
+
+.highlights-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.highlights-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+/* 3 on top row, 2 on bottom row at desktop */
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+/* Card style similar to Samsung tiles */
+.highlight-card {
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 18px 20px 16px;
+    box-shadow: 0 0 0 1px #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.highlight-card:hover {
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+}
+
+.highlight-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.highlight-icon {
+    font-size: 26px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+}
+
+.highlight-top h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Body: show preview, click to expand */
+
+.highlight-body {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    position: relative;
+    max-height: 56px;           /* ~2–3 lines as preview */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+/* subtle gradient fade at bottom when truncated */
+.highlight-body::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(247, 247, 247, 0), #f7f7f7);
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+/* Expanded state */
+.highlight-card.expanded .highlight-body {
+    max-height: 500px;
+}
+
+.highlight-card.expanded .highlight-body::after {
+    opacity: 0;
+}
+
+/* Learn more button */
+
+.highlight-more {
+    margin-top: auto;
+    align-self: flex-start;
+    border: none;
+    background: none;
+    padding: 2px 0 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #444;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.highlight-more::after {
+    content: "›";
+    font-size: 13px;
+}
+
+/* When expanded, change label */
+
+.highlight-card.expanded .highlight-more::after {
+    content: "˄";
+}
+
+/* Responsive: collapse to 2 columns then 1 */
+
+@media (max-width: 900px) {
+    .highlights-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .highlights-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Specs / product module section */
+
+.specs {
+    background: #f7f7f7;
+    padding: 60px 20px 80px;
+}
+
+.specs-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Left image */
+
+.specs-image img {
+    width: 100%;
+    max-width: 520px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Right column */
+
+.specs-details {
+    padding-right: 40px;
+}
+
+.specs-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 6px;
+}
+
+.specs-size {
+    font-size: 14px;
+    color: #777;
+    margin: 0 0 20px;
+}
+
+.specs-divider {
+    height: 1px;
+    background: #e2e2e2;
+    margin-bottom: 20px;
+}
+
+/* Specs grid layout */
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns like your screenshot */
+    gap: 32px 24px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.spec-icon {
+    font-size: 26px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spec-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.4;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+}
